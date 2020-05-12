@@ -1,0 +1,15 @@
+import * as React from 'react';
+
+interface IProps {
+
+}
+
+const <%= name %>:  React.FC<IProps> = (props: IProps) => {
+    return (
+        <div>
+          write here your own core component
+        </div>
+    );
+};
+
+export default <%= name %>;
