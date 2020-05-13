@@ -8,7 +8,7 @@ import DeviceGalleryPage from 'pages/DevicesGallery';
 /* -------------- Routes Paths --------------- */
 export enum RoutesPath {
     ROOT = '/',
-    ERROR_PAGE = '/errorPage'
+    ERROR_PAGE = '/error-page'
 }
 
 export default (

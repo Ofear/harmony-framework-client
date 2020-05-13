@@ -8,7 +8,7 @@ interface IProps extends InjectedFormProps {
 
 }
 
-class <%= className %> extends Component<IProps> {
+class <%= className %> extends React.Component<IProps> {
     render() {
 
         return (

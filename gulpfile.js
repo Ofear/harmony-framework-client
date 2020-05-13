@@ -22,9 +22,8 @@ gulp.task('createContainer', () => {
 
 	createTemplate(
 		'./generator/templates/client/container-template',
-		`${process.env.INIT_CWD}/${name}/${className}.tsx`,
+		`${process.env.INIT_CWD}/${className}/index.tsx`,
 		{
-			name,
 			className,
 			classNameLowerCase
 		}
@@ -39,9 +38,8 @@ gulp.task('createFormContainer', () => {
 
 	createTemplate(
 		'./generator/templates/client/form-container-template',
-		`${process.env.INIT_CWD}/${name}/${className}.tsx`,
+		`${process.env.INIT_CWD}/${className}/index.tsx`,
 		{
-			name,
 			className,
 			classNameLowerCase
 		}

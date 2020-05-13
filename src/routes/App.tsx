@@ -5,6 +5,7 @@ import { Spinner } from 'react-redux-spinner'; // Can be Replace with your Custo
 import Localization from 'containers/Localization';
 import ErrorHandler from 'containers/ErrorHandler';
 
+
 interface IProps {
     children: any
 }
@@ -20,6 +21,10 @@ class App extends React.Component<IProps> {
 			</>
 		);
 	}
+
+	renderMobile() {
+        return <div>Hello Wrold</div>
+    }
 }
 
 export default baseConnect(App,
