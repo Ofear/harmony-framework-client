@@ -14,10 +14,6 @@ export enum RoutesPath {
 export default (
 	<App>
 		<Route exact path={RoutesPath.ROOT} component={DeviceGalleryPage} />
-		<Route
-			exact
-			path={RoutesPath.ERROR_PAGE}
-			component={() => <div>error page</div>}
-		/>
+		<Route exact path={RoutesPath.ERROR_PAGE} component={() => <div>error page</div>} />
 	</App>
 );

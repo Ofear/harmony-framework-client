@@ -11,10 +11,7 @@ class Localization extends React.Component<IProps> {
 		const { languages, setActiveLanguage } = this.props;
 
 		return (
-			<div
-				className="locale"
-				style={{ width: '100%', padding: '10px', textAlign: 'center' }}
-			>
+			<div className="locale" style={{ width: '100%', padding: '10px', textAlign: 'center' }}>
 				Language:
 				<select
 					onChange={(event: any) => {

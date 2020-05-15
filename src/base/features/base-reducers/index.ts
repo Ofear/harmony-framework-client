@@ -33,14 +33,8 @@ const sessionPersistConfig = {
 
 export default {
 	form,
-	localPersistData: persistReducer(
-		localPersistConfig,
-		localPersistDataReducer
-	),
-	sessionPersistData: persistReducer(
-		sessionPersistConfig,
-		sessionPersistDataReducer
-	),
+	localPersistData: persistReducer(localPersistConfig, localPersistDataReducer),
+	sessionPersistData: persistReducer(sessionPersistConfig, sessionPersistDataReducer),
 	localize: localizeReducer,
 	errorHandler: errorHandlerReducer,
 	pendingTasks: pendingTasksReducer

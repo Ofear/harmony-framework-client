@@ -12,7 +12,6 @@ export interface IActionCreator {
 	setLocalDataExample: (localDataExample: string) => any;
 }
 
-export interface ISetLocalDataExampleAction
-	extends Action<TypesNames.SET_LOCAL_DATA_EXAMPLE> {
+export interface ISetLocalDataExampleAction extends Action<TypesNames.SET_LOCAL_DATA_EXAMPLE> {
 	localDataExample: string;
 }

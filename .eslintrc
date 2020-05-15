@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+    "linebreak-style": 0,
+    "global-require": 0,
+    "eslint-linebreak-style": [0, "error", "windows"],
+    "indent": ["error", "tab"],
+    "no-tabs": ["error", { "allowIndentationTabs": true }],
+    "react/jsx-indent-props": ["error", "tab"],
+    "react/jsx-indent": ["error", "tab"],
+    "@typescript-eslint/indent": ["error", "tab"],
+    "comma-dangle": ["error", "only-multiline"],
+    "no-console": 1
+  }
+}

@@ -14,8 +14,7 @@ export interface IActionCreator {
 	setDeviceList: (deviceList: IDevice[]) => ISetDeviceListAction;
 }
 
-export interface ISetDeviceListAction
-	extends Action<TypesNames.SET_DEVICE_LIST> {
+export interface ISetDeviceListAction extends Action<TypesNames.SET_DEVICE_LIST> {
 	deviceList: IDevice[];
 }
 

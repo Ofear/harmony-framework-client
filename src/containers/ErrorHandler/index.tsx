@@ -2,11 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Modal, Button } from 'react-bootstrap';
 import { baseConnect } from '@base/features/base-redux-react-connect';
-import {
-	clearErrorHandler,
-	IErrorHandlerRequest,
-	BaseComponentTypes
-} from '@base/features/base-error-handler';
+import { clearErrorHandler, IErrorHandlerRequest, BaseComponentTypes } from '@base/features/base-error-handler';
 import { IApplicationState } from 'actions/redux';
 import { RoutesPath } from 'routes';
 
@@ -44,10 +40,7 @@ class ErrorHandler extends React.Component<IProps> {
 		const { errorHandler } = this.props;
 		const { component, payload } = errorHandler;
 
-		if (
-			!Object.keys(errorHandler).length ||
-			component === BaseComponentTypes.IGNORE
-		) {
+		if (!Object.keys(errorHandler).length || component === BaseComponentTypes.IGNORE) {
 			return null;
 		}
 
@@ -55,10 +48,7 @@ class ErrorHandler extends React.Component<IProps> {
 		switch (component.toLowerCase()) {
 			case ComponentTypes.MODAL: {
 				/***** Here you can return your modal for display with any props you sent in payload *****/
-				return ReactDOM.createPortal(
-					this.renderModal(payload),
-					this.appElement as Element
-				);
+				return ReactDOM.createPortal(this.renderModal(payload), this.appElement as Element);
 			}
 			default: {
 				return null;

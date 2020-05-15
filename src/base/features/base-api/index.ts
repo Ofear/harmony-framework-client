@@ -25,10 +25,7 @@ class Request {
 			url: '/users/broadcastAction',
 			data: {
 				action,
-				token:
-					typeof sessionStorage !== 'undefined'
-						? sessionStorage.getItem('wsa_token')
-						: {}
+				token: typeof sessionStorage !== 'undefined' ? sessionStorage.getItem('wsa_token') : {}
 			}
 		};
 

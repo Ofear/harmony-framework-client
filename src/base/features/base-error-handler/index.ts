@@ -27,11 +27,7 @@ export const dispatchErrorHandler = (response: AxiosResponse) => {
 		if (errorCode) {
 			const errorData = handlers[`${errorCode}_${status}`];
 
-			if (
-				errorData &&
-				errorData.component.toLocaleLowerCase() !==
-					BaseComponentTypes.IGNORE
-			) {
+			if (errorData && errorData.component.toLocaleLowerCase() !== BaseComponentTypes.IGNORE) {
 				Store.dispatch({
 					payload: errorData,
 					type: TypesNames.ERROR_HANDLER_INVOKE

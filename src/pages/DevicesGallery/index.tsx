@@ -15,7 +15,9 @@ interface IProps {
 
 class DeviceGallery extends React.Component<IProps> {
 	componentDidMount() {
-		this.props.getDeviceList();
+		const { getDeviceList } = this.props;
+
+		getDeviceList();
 	}
 
 	render() {
@@ -33,12 +35,8 @@ class DeviceGallery extends React.Component<IProps> {
 							<DeviceCard
 								key={device.id}
 								device={device}
-								buttonTitle={translate(
-									'deviceGallery.addToCartButton'
-								)}
-								priceTitle={translate(
-									'deviceGallery.priceTitle'
-								)}
+								buttonTitle={translate('deviceGallery.addToCartButton')}
+								priceTitle={translate('deviceGallery.priceTitle')}
 								onBuyClick={(item: any) => {
 									// tslint:disable-next-line:no-console
 									console.log('buy item', item);
@@ -54,11 +52,9 @@ class DeviceGallery extends React.Component<IProps> {
 
 export default baseConnect(
 	DeviceGallery,
-	(state: IApplicationState) => {
-		return {
-			deviceList: catalogSelector.devices(state)
-		};
-	},
+	(state: IApplicationState) => ({
+		deviceList: catalogSelector.devices(state)
+	}),
 	{
 		getDeviceList: CatalogActions.getDeviceList
 	}

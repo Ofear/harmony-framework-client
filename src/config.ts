@@ -5,7 +5,7 @@ interface IConfig {
 	appName?: string;
 }
 
-function initConfig() {
+const initConfig = (): IConfig => {
 	let appConfig: IConfig = {};
 
 	if (process.env.NODE_ENV === 'development') {

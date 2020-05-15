@@ -1,12 +1,7 @@
 import Immutable, { from } from 'seamless-immutable';
 import { createReducer, createActions } from 'reduxsauce';
 import { IApplicationState } from '../index';
-import {
-	ILocalPersistDataState,
-	TypesNames,
-	IActionCreator,
-	ISetLocalDataExampleAction
-} from './interfaces';
+import { ILocalPersistDataState, TypesNames, IActionCreator, ISetLocalDataExampleAction } from './interfaces';
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -26,16 +21,12 @@ const INITIAL_STATE = Immutable<ILocalPersistDataState>({
 /* ------------- Selectors ------------- */
 
 export const localDataSelector = {
-	localDataExample: (state: IApplicationState) =>
-		state.localPersistData.localDataExample
+	localDataExample: (state: IApplicationState) => state.localPersistData.localDataExample
 };
 
 /* ------------- Reducers ------------- */
 
-const setLocalDataExampleReducer = (
-	state: any,
-	action: ISetLocalDataExampleAction
-) => {
+const setLocalDataExampleReducer = (state: any, action: ISetLocalDataExampleAction) => {
 	const newState = from(state); // persistence provide us state without Immutable functionality  - therefor we convert state to use Immutable in that case
 	const { localDataExample } = action;
 	return newState.merge({ localDataExample });

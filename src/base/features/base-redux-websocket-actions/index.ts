@@ -25,9 +25,7 @@ class WSActions {
 		try {
 			const wsaToken = sessionStorage.getItem('wsa_token');
 			const dispatchAction = JSON.parse(data);
-			const me =
-				wsaToken &&
-				dispatchAction.token === sessionStorage.getItem('wsa_token');
+			const me = wsaToken && dispatchAction.token === sessionStorage.getItem('wsa_token');
 
 			if (dispatchAction.WS_ACTION && dispatchAction.action && !me) {
 				this.store.dispatch(dispatchAction.action);

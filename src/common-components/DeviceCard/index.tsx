@@ -19,11 +19,7 @@ export default class DeviceCard extends React.Component<IProps> {
 			<Col key={device.id} xs={6} md={4} className="device-card-col">
 				<Card className="device-card">
 					<Card.Body>
-						<Card.Img
-							variant="top"
-							src={device.image}
-							className="device-card-img"
-						/>
+						<Card.Img variant="top" src={device.image} className="device-card-img" />
 						<Card.Text />
 						<Card.Title>{device.name}</Card.Title>
 						<Card.Text>{device.description}</Card.Text>

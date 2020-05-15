@@ -1,12 +1,7 @@
 import Immutable from 'seamless-immutable';
 import { createReducer, createActions } from 'reduxsauce';
 import { IApplicationState } from '../index';
-import {
-	TypesNames,
-	IActionCreator,
-	ICatalogState,
-	ISetDeviceListAction
-} from './interfaces';
+import { TypesNames, IActionCreator, ICatalogState, ISetDeviceListAction } from './interfaces';
 
 /* ------------- Types and Action Creators ------------- */
 

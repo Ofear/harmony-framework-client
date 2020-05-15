@@ -8,9 +8,7 @@ import * as spinnerConfig from 'configurations/spinner.config.json';
 		this.addEventListener(
 			'readystatechange',
 			function() {
-				const matchItem = _.filter(spinnerConfig.ignoreList, regx =>
-					url.match(regx)
-				);
+				const matchItem = _.filter(spinnerConfig.ignoreList, regx => url.match(regx));
 
 				if (this.readyState === this.OPENED) {
 					if (matchItem && matchItem.length) {
