@@ -15,6 +15,7 @@
   "rules": {
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
     "react/sort-comp": ["off"],
+    "arrow-body-style": ["off"],
     "func-names": ["off"],
     "lines-between-class-members": ["off"],
     "import/prefer-default-export": "off",
