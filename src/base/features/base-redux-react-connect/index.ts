@@ -12,10 +12,9 @@ export function baseConnectForm(component: any, mapStateToProps: any, propsToDis
 }
 
 function connectWithReduxForm(component: any, reduxFormConfig: any) {
-	const defaultValidateFunction = () => {
-		return undefined;
-	};
+	const defaultValidateFunction = () => undefined;
 
+	// eslint-disable-next-line no-param-reassign
 	reduxFormConfig.validate = component.prototype.validate || defaultValidateFunction;
 
 	return reduxForm(reduxFormConfig)(component);

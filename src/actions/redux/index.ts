@@ -1,13 +1,13 @@
 import { combineReducers, Reducer } from 'redux';
 
-import baseReducers, { IBaseApplicationState } from '../../base/features/base-reducers';
-import { ICatalogState } from './catalog/interfaces';
+import baseReducers, { BaseApplicationState } from '../../base/features/base-reducers';
+import { CatalogState } from './catalog/interfaces';
 
-export interface IApplicationState extends IBaseApplicationState {
-	catalog: ICatalogState;
+export interface ApplicationState extends BaseApplicationState {
+	catalog: CatalogState;
 }
 
-const rootReducer: Reducer<IApplicationState> = combineReducers<IApplicationState>({
+const rootReducer: Reducer<ApplicationState> = combineReducers<ApplicationState>({
 	...baseReducers,
 
 	catalog: require('./catalog').reducer

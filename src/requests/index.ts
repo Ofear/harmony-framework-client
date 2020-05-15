@@ -5,16 +5,12 @@
 import request from '@base/features/base-api';
 import { config } from 'config';
 
-export const createApi = (baseURL = config.ROOT_SERVER_URL) => {
-	return {
-		getDevices: () => {
-			return request.call({
-				baseURL,
-				method: 'get',
-				url: '/devices'
-			});
-		}
-	};
-};
+export const createApi = (baseURL = config.ROOT_SERVER_URL) => ({
+	getDevices: () => request.call({
+		baseURL,
+		method: 'get',
+		url: '/devices'
+	})
+});
 
 export default createApi();

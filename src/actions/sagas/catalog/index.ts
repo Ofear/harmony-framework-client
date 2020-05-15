@@ -1,16 +1,18 @@
-import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
+import {
+	all, call, fork, put, takeLatest
+} from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import api from 'requests';
 import CatalogActions, { CatalogTypes } from 'actions/redux/catalog';
-import { IDevice } from 'actions/redux/catalog/interfaces';
+import { Device } from 'actions/redux/catalog/interfaces';
 
 function* getDevices() {
 	try {
-		const response: AxiosResponse<IDevice[]> = yield call(api.getDevices);
+		const response: AxiosResponse<Device[]> = yield call(api.getDevices);
 
 		yield put(CatalogActions.setDeviceList(response.data));
 	} catch (e) {
-		// tslint:disable-next-line:no-console
+		// eslint-disable-next-line no-console
 		console.log(e);
 	}
 }

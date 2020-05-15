@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 
-export interface ICatalogState {
-	deviceList: IDevice[];
+export interface CatalogState {
+	deviceList: Device[];
 }
 
 export enum TypesNames {
@@ -9,16 +9,16 @@ export enum TypesNames {
 	SET_DEVICE_LIST = 'SET_DEVICE_LIST'
 }
 
-export interface IActionCreator {
+export interface ActionCreator {
 	getDeviceList: () => Action<TypesNames.GET_DEVICE_LIST>;
-	setDeviceList: (deviceList: IDevice[]) => ISetDeviceListAction;
+	setDeviceList: (deviceList: Device[]) => SetDeviceListAction;
 }
 
-export interface ISetDeviceListAction extends Action<TypesNames.SET_DEVICE_LIST> {
-	deviceList: IDevice[];
+export interface SetDeviceListAction extends Action<TypesNames.SET_DEVICE_LIST> {
+	deviceList: Device[];
 }
 
-export interface IDevice {
+export interface Device {
 	id: number;
 	name: string;
 	price: string;

@@ -4,7 +4,7 @@ import Store from '@base/features/base-store';
 import * as errorHandlerConfig from 'configurations/error.config.json';
 import { TypesNames } from './reducer';
 
-export interface IErrorHandlerRequest<T> {
+export interface ErrorHandlerRequest<T> {
 	component: string;
 	payload: T;
 }
@@ -21,7 +21,7 @@ export const clearErrorHandler = () => {
 export const dispatchErrorHandler = (response: AxiosResponse) => {
 	try {
 		const { pathToErrorCode, handlers } = errorHandlerConfig;
-		const status = response.status;
+		const { status } = response;
 		const errorCode = _.get(response, pathToErrorCode);
 
 		if (errorCode) {
@@ -40,11 +40,8 @@ export const dispatchErrorHandler = (response: AxiosResponse) => {
 			});
 		}
 	} catch (e) {
-		// tslint:disable-next-line:no-console
-		console.error(
-			'There was an error with dispatch error handler, please make sure you define properly your error handler config',
-			e
-		);
+		// eslint-disable-next-line max-len,no-console
+		console.error('There was an error with dispatch error handler, please make sure you define properly your error handler config', e);
 		Store.dispatch({
 			payload: { component: BaseComponentTypes.ERROR_PAGE },
 			type: TypesNames.ERROR_HANDLER_INVOKE

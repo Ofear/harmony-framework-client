@@ -1,12 +1,12 @@
-interface IConfig {
+interface Config {
 	ROOT_SERVER_URL?: string;
 	ROOT_WS_URL?: string;
 	USE_WS_ACTION?: boolean;
 	appName?: string;
 }
 
-const initConfig = (): IConfig => {
-	let appConfig: IConfig = {};
+const initConfig = (): Config => {
+	let appConfig: Config = {};
 
 	if (process.env.NODE_ENV === 'development') {
 		/* ---------- Config Development --------- */
@@ -25,6 +25,6 @@ const initConfig = (): IConfig => {
 	}
 
 	return appConfig;
-}
+};
 
 export const config = initConfig();

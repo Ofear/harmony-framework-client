@@ -3,32 +3,32 @@ import { Route } from 'react-router-dom';
 import { baseConnect } from '@base/features/base-redux-react-connect';
 
 const pageDecorator = (WrappedComponent: any) => {
+	// eslint-disable-next-line react/prefer-stateless-function
 	class PageContainer extends React.Component<any> {
 		render() {
+			// eslint-disable-next-line react/jsx-props-no-spreading
 			return <WrappedComponent {...this.props} />;
 		}
 	}
 
 	return baseConnect(
 		PageContainer,
-		(state: any) => {
-			return {};
-		},
+		(/* state: any */) => ({}),
 		{}
 	);
 };
 
-const CustomRoute = ({ component, ...rest }: any) => {
-	return (
-		<Route
-			{...rest}
-			render={props => {
-				const ComponentToRender = pageDecorator(component);
+const CustomRoute = ({ component, ...rest }: any) => (
+	<Route
+		// eslint-disable-next-line react/jsx-props-no-spreading
+		{...rest}
+		render={(props): React.ComponentElement<any, any> => {
+			const ComponentToRender = pageDecorator(component);
 
-				return <ComponentToRender {...props} />;
-			}}
-		/>
-	);
-};
+			// eslint-disable-next-line react/jsx-props-no-spreading
+			return <ComponentToRender {...props} />;
+		}}
+	/>
+);
 
 export default CustomRoute;

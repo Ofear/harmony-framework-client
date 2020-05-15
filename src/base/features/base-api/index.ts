@@ -16,8 +16,8 @@ class Request {
 		axios.defaults.headers.common[key] = value;
 	}
 
-	broadcastAction(action: any) {
-		if (!action) return;
+	broadcastAction(action: any): any {
+		if (!action) return null;
 
 		const callConfig = {
 			method: 'post',
@@ -33,21 +33,19 @@ class Request {
 	}
 
 	async call(config: any) {
-		return new Promise(async (resolve, reject) => {
-			let response: AxiosResponse;
+		let response: AxiosResponse;
 
-			try {
-				response = await axios(config);
+		try {
+			response = await axios(config);
 
-				resolve(response);
-			} catch (e) {
-				response = e.response || {};
+			return response;
+		} catch (e) {
+			const error = e.response || {};
 
-				dispatchErrorHandler(response);
+			dispatchErrorHandler(error);
 
-				reject(response);
-			}
-		});
+			throw new Error(e);
+		}
 	}
 }
 

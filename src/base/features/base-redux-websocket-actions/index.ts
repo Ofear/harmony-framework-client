@@ -1,22 +1,22 @@
 import { config } from 'config';
 import Store from '@base/features/base-store';
-import wsReconnectClient from 'ws-reconnect-js';
+import WsReconnectClient from 'ws-reconnect-js';
 import guid from 'guid';
 
-interface ISocket {
+interface Socket {
 	start: () => void;
 	destroy: () => void;
 }
 
 class WSActions {
-	socket: ISocket;
+	socket: Socket;
 	store: any;
 	url: any;
 
 	constructor(store: any, url: any, options: any) {
 		this.store = store;
 		this.url = url;
-		this.socket = new wsReconnectClient(url, options, {
+		this.socket = new WsReconnectClient(url, options, {
 			onMessageHandler: this.onMessage.bind(this)
 		});
 	}
@@ -32,7 +32,7 @@ class WSActions {
 			}
 		} catch (e) {
 			if (process.env.NODE_ENV === 'development') {
-				// tslint:disable-next-line:no-console
+				// eslint-disable-next-line no-console
 				console.error('dispatchAction faild: ', e);
 			}
 		}

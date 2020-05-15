@@ -1,9 +1,9 @@
 import * as React from 'react';
+import DeviceGalleryPage from 'pages/DevicesGallery';
 import Route from './PageContainer';
 
 /* -------------- Pages --------------- */
 import App from './App';
-import DeviceGalleryPage from 'pages/DevicesGallery';
 
 /* -------------- Routes Paths --------------- */
 export enum RoutesPath {

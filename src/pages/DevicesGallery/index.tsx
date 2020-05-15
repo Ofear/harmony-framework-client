@@ -2,18 +2,18 @@ import * as React from 'react';
 import { TranslateFunction } from 'react-localize-redux';
 import { baseConnect } from '@base/features/base-redux-react-connect';
 import { Container, Row, CardDeck } from 'react-bootstrap';
-import { IApplicationState } from 'actions/redux';
+import { ApplicationState } from 'actions/redux';
 import CatalogActions, { catalogSelector } from 'actions/redux/catalog';
-import { IDevice } from 'actions/redux/catalog/interfaces';
+import { Device } from 'actions/redux/catalog/interfaces';
 import DeviceCard from 'common-components/DeviceCard';
 
-interface IProps {
+interface Props {
 	getDeviceList: () => void;
-	deviceList: IDevice[];
+	deviceList: Device[];
 	translate: TranslateFunction;
 }
 
-class DeviceGallery extends React.Component<IProps> {
+class DeviceGallery extends React.Component<Props> {
 	componentDidMount() {
 		const { getDeviceList } = this.props;
 
@@ -31,14 +31,14 @@ class DeviceGallery extends React.Component<IProps> {
 			<Container>
 				<Row>
 					<CardDeck>
-						{deviceList.map((device: IDevice) => (
+						{deviceList.map((device: Device) => (
 							<DeviceCard
 								key={device.id}
 								device={device}
 								buttonTitle={translate('deviceGallery.addToCartButton')}
 								priceTitle={translate('deviceGallery.priceTitle')}
 								onBuyClick={(item: any) => {
-									// tslint:disable-next-line:no-console
+									// eslint-disable-next-line no-console
 									console.log('buy item', item);
 								}}
 							/>
@@ -52,7 +52,7 @@ class DeviceGallery extends React.Component<IProps> {
 
 export default baseConnect(
 	DeviceGallery,
-	(state: IApplicationState) => ({
+	(state: ApplicationState) => ({
 		deviceList: catalogSelector.devices(state)
 	}),
 	{

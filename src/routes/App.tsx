@@ -5,31 +5,41 @@ import { Spinner } from 'react-redux-spinner'; // Can be Replace with your Custo
 import Localization from 'containers/Localization';
 import ErrorHandler from 'containers/ErrorHandler';
 
-interface IProps {
+interface Props {
 	children: any;
 }
 
-class App extends React.Component<IProps> {
+class App extends React.Component<Props> {
 	render() {
+		const { children } = this.props;
+
 		return (
 			<>
 				<ErrorHandler />
 				<Spinner config={{}} />
 				<Localization />
-				{this.props.children}
+				{children}
 			</>
 		);
 	}
 
 	renderMobile() {
-		return <div>Hello Wrold</div>;
+		const { children } = this.props;
+
+		return (
+			<>
+				<h1>Hello Mobile</h1>
+				<ErrorHandler />
+				<Spinner config={{}} />
+				<Localization />
+				{children}
+			</>
+		);
 	}
 }
 
 export default baseConnect(
 	App,
-	(/* state */) => {
-		return {};
-	},
+	(/* state */) => ({}),
 	{}
 );

@@ -27,7 +27,7 @@ const events = (() => {
 
 			// Cycle through topics queue, fire!
 			// tslint:disable-next-line:ter-prefer-arrow-callback
-			topics[topic].forEach(item => {
+			topics[topic].forEach((item) => {
 				item(info !== undefined ? info : {});
 			});
 		}
@@ -37,9 +37,7 @@ const events = (() => {
 export const globalStoreListener = events;
 
 if (typeof window !== 'undefined') {
-	window.addGlobalStoreListener = listener => {
-		return globalStoreListener.subscribe(STORE_ACTION_LISTENERS, listener);
-	};
+	window.addGlobalStoreListener = (listener) => globalStoreListener.subscribe(STORE_ACTION_LISTENERS, listener);
 }
 
 export default globalStoreListener;
