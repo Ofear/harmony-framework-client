@@ -1,5 +1,3 @@
 import RenderMobile from './renderMobile';
 
-export {
-	RenderMobile
-};
+export { RenderMobile };

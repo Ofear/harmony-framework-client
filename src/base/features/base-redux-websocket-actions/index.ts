@@ -1,18 +1,17 @@
-import {config} from "config";
-import Store from "@base/features/base-store";
-
-const wsReconnectClient = require('ws-reconnect-js');
-const guid = require('guid');
+import { config } from 'config';
+import Store from '@base/features/base-store';
+import wsReconnectClient from 'ws-reconnect-js';
+import guid from 'guid';
 
 interface ISocket {
-    start: Function,
-    destroy: Function
+	start: () => void;
+	destroy: () => void;
 }
 
 class WSActions {
-    socket: ISocket;
-    store: any;
-    url: any;
+	socket: ISocket;
+	store: any;
+	url: any;
 
 	constructor(store: any, url: any, options: any) {
 		this.store = store;
@@ -20,21 +19,22 @@ class WSActions {
 		this.socket = new wsReconnectClient(url, options, {
 			onMessageHandler: this.onMessage.bind(this)
 		});
-
 	}
 
 	onMessage(msg: any, data: any) {
 		try {
 			const wsaToken = sessionStorage.getItem('wsa_token');
 			const dispatchAction = JSON.parse(data);
-			const me = (wsaToken && dispatchAction.token === sessionStorage.getItem('wsa_token'));
+			const me =
+				wsaToken &&
+				dispatchAction.token === sessionStorage.getItem('wsa_token');
 
 			if (dispatchAction.WS_ACTION && dispatchAction.action && !me) {
 				this.store.dispatch(dispatchAction.action);
 			}
 		} catch (e) {
 			if (process.env.NODE_ENV === 'development') {
-				// eslint-disable-next-line no-console
+				// tslint:disable-next-line:no-console
 				console.error('dispatchAction faild: ', e);
 			}
 		}
@@ -49,17 +49,15 @@ class WSActions {
 		sessionStorage.removeItem('wsa_token');
 		this.socket.destroy();
 	}
-
-
 }
 
 const wsAction = new WSActions(Store, config.ROOT_WS_URL, {
-    retryCount: 3,
-    reconnectInterval: 3,
+	retryCount: 3,
+	reconnectInterval: 3
 });
 
 if (config.USE_WS_ACTION) {
-    wsAction.start();
+	wsAction.start();
 }
 
 export default wsAction;

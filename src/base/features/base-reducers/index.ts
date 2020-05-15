@@ -1,4 +1,4 @@
-import {reducer as form} from 'redux-form';
+import { reducer as form } from 'redux-form';
 import { persistReducer } from 'redux-persist';
 import localStorage from 'redux-persist/lib/storage';
 import sessionStorage from 'redux-persist/lib/storage/session';
@@ -12,30 +12,36 @@ import { ILocalPersistDataState } from 'actions/redux/localPersistData/interface
 import { ISessionPersistDataState } from 'actions/redux/sessionPersistData/interfaces';
 
 export interface IBaseApplicationState {
-    localPersistData: ILocalPersistDataState,
-    sessionPersistData: ISessionPersistDataState,
-    localize: any;
-    form: any;
-    errorHandler: IErrorHandlerRequest<any>;
-    pendingTasks: any;
+	localPersistData: ILocalPersistDataState;
+	sessionPersistData: ISessionPersistDataState;
+	localize: any;
+	form: any;
+	errorHandler: IErrorHandlerRequest<any>;
+	pendingTasks: any;
 }
 
 const localPersistConfig = {
-    storage: localStorage,
-    key: 'localPersistData'
+	storage: localStorage,
+	key: 'localPersistData'
 };
 
 const sessionPersistConfig = {
-    storage: sessionStorage,
-    key: 'sessionPersistData',
-    blackList: []
+	storage: sessionStorage,
+	key: 'sessionPersistData',
+	blackList: []
 };
 
 export default {
-    form,
-    localPersistData: persistReducer(localPersistConfig, localPersistDataReducer),
-    sessionPersistData: persistReducer(sessionPersistConfig, sessionPersistDataReducer),
-    localize: localizeReducer,
-    errorHandler: errorHandlerReducer,
-    pendingTasks: pendingTasksReducer
-}
+	form,
+	localPersistData: persistReducer(
+		localPersistConfig,
+		localPersistDataReducer
+	),
+	sessionPersistData: persistReducer(
+		sessionPersistConfig,
+		sessionPersistDataReducer
+	),
+	localize: localizeReducer,
+	errorHandler: errorHandlerReducer,
+	pendingTasks: pendingTasksReducer
+};

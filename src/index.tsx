@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { BrowserRouter, Switch } from 'react-router-dom';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import { LocalizeProvider } from 'react-localize-redux';
 
 /* -------- Load Styles --------- */
@@ -20,15 +20,14 @@ import routes from 'routes';
 
 /* -------- render application ---------- */
 ReactDOM.render(
-    <Provider store={Store}>
-        <PersistGate persistor={persistor}>
-            <LocalizeProvider store={Store}>
-                <BrowserRouter>
-                    <Switch>
-                        {routes}
-                    </Switch>
-                </BrowserRouter>
-            </LocalizeProvider>
-        </PersistGate>
-    </Provider>
-    , document.getElementById('app'));
+	<Provider store={Store}>
+		<PersistGate persistor={persistor}>
+			<LocalizeProvider store={Store}>
+				<BrowserRouter>
+					<Switch>{routes}</Switch>
+				</BrowserRouter>
+			</LocalizeProvider>
+		</PersistGate>
+	</Provider>,
+	document.getElementById('app')
+);

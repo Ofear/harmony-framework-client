@@ -26,6 +26,9 @@
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
-  "include": ["src/*/"],
+  "include": [
+    "src/*/",
+    "index.d.ts"
+  ],
   "exclude": ["node_modules", "generator", "dist", "test"]
 }
