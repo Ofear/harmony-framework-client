@@ -1,8 +1,6 @@
 {
   "extends": [
     "tslint:recommended",
-    "tslint-config-airbnb",
-    "tslint-config-prettier",
     "tslint-plugin-prettier"
   ],
   "linterOptions": {
@@ -13,11 +11,13 @@
     ]
   },
   "rules": {
+    "no-trailing-whitespace": [true, "ignore-blank-lines"],
     "variable-name": [true, "allow-pascal-case"],
     "import-name": [false],
     "no-console": [true, "log", "error"],
     "prettier": [true,
       {
+        "printWidth": 120,
         "endOfLine": "auto",
         "singleQuote": true,
         "tabWidth": 4,
