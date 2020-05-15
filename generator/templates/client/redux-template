@@ -1,14 +1,16 @@
-import Immutable, { from } from 'seamless-immutable';
+import Immutable from 'seamless-immutable';
 import { createReducer, createActions } from 'reduxsauce';
-import { IApplicationState } from '../index';
-import { I<%= reducerNameCapital %>State, TypesNames, IActionCreator, I<%= reducerNameCapital %>Action } from './interfaces';
+import { ApplicationState } from '../index';
+import {
+	<%= reducerNameCapital %>State, TypesNames, ActionCreator, <%= reducerNameCapital %>Action
+} from './interfaces';
 
 // TODO: Do not for get add your reducer to index file
 
 /* ------------- Types and Action Creators ------------- */
 
-const { Creators } = createActions<TypesNames, IActionCreator>({
-    setExample: ['exampleData']
+const { Creators } = createActions<TypesNames, ActionCreator>({
+	setExample: ['exampleData']
 });
 
 export const <%= reducerNameCapital %>Types = TypesNames;
@@ -16,25 +18,25 @@ export default Creators;
 
 /* ------------- Initial State ------------- */
 
-const INITIAL_STATE = Immutable<I<%= reducerNameCapital %>State>({
-    exampleData: 'Initial Data Example'
+const INITIAL_STATE = Immutable<<%= reducerNameCapital %>State>({
+	exampleData: 'Initial Data Example'
 });
 
 /* ------------- Selectors ------------- */
 
 export const <%= reducerName %>Selector = {
-    getExampleData: (state: IApplicationState) => state.<%= reducerName %>.exampleData
+	getExampleData: (state: ApplicationState) => state.<%= reducerName %>.exampleData
 };
 
 /* ------------- Reducers ------------- */
 
-const setExampleReducer = (state: any, action: I<%= reducerNameCapital %>Action ) => {
-    const { exampleData } = action;
-    return state.merge({ exampleData });
+const setExampleReducer = (state: any, action: <%= reducerNameCapital %>Action) => {
+	const { exampleData } = action;
+	return state.merge({ exampleData });
 };
 
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-    [<%= reducerNameCapital %>Types.SET_EXAMPLE]: setExampleReducer
+	[<%= reducerNameCapital %>Types.SET_EXAMPLE]: setExampleReducer
 });

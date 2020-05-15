@@ -68,9 +68,10 @@ gulp.task('createSaga', () => {
 
 	createTemplate(
 		'./generator/templates/client/saga-template',
-		`${process.env.INIT_CWD}/${sagaName}/${sagaName}.ts`,
+		`${process.env.INIT_CWD}/${sagaName}/index.ts`,
 		{
-			sagaName
+			sagaName,
+			sagaNameUppercase: capitalizeFirstLate(sagaName)
 		}
 	);
 

@@ -1,14 +1,18 @@
 import * as React from 'react';
+import { Dispatch } from 'redux';
 import { TranslateFunction } from 'react-localize-redux';
 import { baseConnect } from '@base/features/base-redux-react-connect';
 import { Container, Row, CardDeck } from 'react-bootstrap';
 import { ApplicationState } from 'actions/redux';
 import CatalogActions, { catalogSelector } from 'actions/redux/catalog';
+import CartActions from 'actions/redux/cart';
 import { Device } from 'actions/redux/catalog/interfaces';
+import { CartItem } from 'actions/redux/cart/interfaces';
 import DeviceCard from 'common-components/DeviceCard';
 
 interface Props {
 	getDeviceList: () => void;
+	addToCart: (item: CartItem) => void;
 	deviceList: Device[];
 	translate: TranslateFunction;
 }
@@ -21,7 +25,7 @@ class DeviceGallery extends React.Component<Props> {
 	}
 
 	render() {
-		const { deviceList, translate } = this.props;
+		const { deviceList, translate, addToCart } = this.props;
 
 		if (!deviceList || !deviceList.length) {
 			return null;
@@ -37,10 +41,7 @@ class DeviceGallery extends React.Component<Props> {
 								device={device}
 								buttonTitle={translate('deviceGallery.addToCartButton')}
 								priceTitle={translate('deviceGallery.priceTitle')}
-								onBuyClick={(item: any) => {
-									// eslint-disable-next-line no-console
-									console.log('buy item', item);
-								}}
+								onBuyClick={addToCart}
 							/>
 						))}
 					</CardDeck>
@@ -55,7 +56,8 @@ export default baseConnect(
 	(state: ApplicationState) => ({
 		deviceList: catalogSelector.devices(state)
 	}),
-	{
-		getDeviceList: CatalogActions.getDeviceList
-	}
+	(dispatch: Dispatch) => ({
+		getDeviceList: () => dispatch(CatalogActions.getDeviceList()),
+		addToCart: (payload: CartItem) => dispatch(CartActions.addToCart(payload))
+	})
 );
