@@ -9,7 +9,9 @@ export const translations = {
 		pageTitle: [en.deviceGallery.pageTitle, fr.deviceGallery.pageTitle],
 		addToCartButton: [en.deviceGallery.addToCartButton, fr.deviceGallery.addToCartButton],
 		removeFromCartButton: [en.deviceGallery.removeFromCartButton, fr.deviceGallery.removeFromCartButton],
-		priceTitle: [en.deviceGallery.priceTitle, fr.deviceGallery.priceTitle]
+		priceTitle: [en.deviceGallery.priceTitle, fr.deviceGallery.priceTitle],
+		clearCartButton: [en.deviceGallery.clearCartButton, fr.deviceGallery.clearCartButton],
+		checkoutButton: [en.deviceGallery.checkoutButton, fr.deviceGallery.checkoutButton]
 	},
 	checkout: {
 		pageTitle: [en.checkout.pageTitle, fr.checkout.pageTitle],

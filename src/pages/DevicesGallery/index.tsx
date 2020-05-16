@@ -114,7 +114,7 @@ class DeviceGallery extends React.Component<Props, State> {
 						disabled={!cartItems || !cartItems.length}
 						onClick={() => history.push(RoutesPath.CHECKOUT)}
 					>
-						Checkout
+						{translate('deviceGallery.checkoutButton')}
 					</Button>
 					<Button
 						className="footer-buttons"
@@ -123,7 +123,7 @@ class DeviceGallery extends React.Component<Props, State> {
 						disabled={!cartItems || !cartItems.length}
 						onClick={clearCart}
 					>
-						Clear Cart
+						{translate('deviceGallery.clearCartButton')}
 					</Button>
 				</Row>
 			</Container>
