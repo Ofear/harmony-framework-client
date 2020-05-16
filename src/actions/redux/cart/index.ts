@@ -1,5 +1,7 @@
-import Immutable from 'seamless-immutable';
+import Immutable, { from } from 'seamless-immutable';
 import { createReducer, createActions } from 'reduxsauce';
+import reduceReducers from 'reduce-reducers';
+import { makeCart } from '@base/features/base-cart';
 import { ApplicationState } from '../index';
 import {
 	CartState, TypesNames, ActionCreator, SetCartIdAction
@@ -18,25 +20,30 @@ export default Creators;
 /* ------------- Initial State ------------- */
 
 const INITIAL_STATE = Immutable<CartState>({
-	cartId: 198822,
+	cartId: undefined,
 	items: []
 });
 
 /* ------------- Selectors ------------- */
 
 export const cartSelector = {
-	getCartId: (state: ApplicationState) => state.cart.cartId
+	getCartId: (state: ApplicationState) => state.cart.cartId,
+	getCartItems: (state: ApplicationState) => state.cart.items
 };
 
 /* ------------- Reducers ------------- */
 
 const setCartIdReducer = (state: any, action: SetCartIdAction) => {
+	const newState = from(state);
 	const { cartId } = action;
-	return state.merge({ cartId });
+	return newState.merge({ cartId });
 };
 
 /* ------------- Hookup Reducers To Types ------------- */
 
-export const reducer = createReducer(INITIAL_STATE, {
-	[CartTypes.SET_CART_ID]: setCartIdReducer
-});
+export const reducer = reduceReducers(
+	makeCart('cart').reducer,
+	createReducer(INITIAL_STATE, {
+		[CartTypes.SET_CART_ID]: setCartIdReducer
+	})
+);

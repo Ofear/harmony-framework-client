@@ -5,9 +5,8 @@ import { baseConnect } from '@base/features/base-redux-react-connect';
 import { Container, Row, CardDeck } from 'react-bootstrap';
 import { ApplicationState } from 'actions/redux';
 import CatalogActions, { catalogSelector } from 'actions/redux/catalog';
-import CartActions from 'actions/redux/cart';
 import { Device } from 'actions/redux/catalog/interfaces';
-import { CartItem } from 'actions/redux/cart/interfaces';
+import { CartItem, TypesNames } from 'actions/redux/cart/interfaces';
 import DeviceCard from 'common-components/DeviceCard';
 
 interface Props {
@@ -58,6 +57,6 @@ export default baseConnect(
 	}),
 	(dispatch: Dispatch) => ({
 		getDeviceList: () => dispatch(CatalogActions.getDeviceList()),
-		addToCart: (payload: CartItem) => dispatch(CartActions.addToCart(payload))
+		addToCart: (payload: CartItem) => dispatch({ type: TypesNames.ADD_TO_CART, item: payload })
 	})
 );
