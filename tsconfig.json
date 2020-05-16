@@ -26,6 +26,7 @@
     "esModuleInterop": true
   },
   "include": [
+    "files",
     "src/",
     "index.d.ts",
     "test/"

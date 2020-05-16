@@ -9,7 +9,11 @@ export const createApi = (baseURL = config.ROOT_SERVER_URL) => ({
 	getDevices: () => request.call({
 		baseURL,
 		method: 'get',
-		url: '/devices'
+		url: '/getlatest',
+		params: {
+			token: '9800fd0895059fe458971473945a28a1fe2433b6035cf675',
+			limit: 50
+		}
 	})
 });
 
