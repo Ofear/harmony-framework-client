@@ -1,4 +1,3 @@
-
 const gulp = require('gulp');
 const template = require('gulp-template');
 const header = require('gulp-header');
