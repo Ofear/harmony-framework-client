@@ -29,9 +29,7 @@ const DeviceCard: React.FC<Props> = (props: Props) => {
 					<Card.Text>{device.description}</Card.Text>
 					<Card.Text />
 					<Card.Text>
-						{priceTitle}
-						:
-						<b>{device.price}</b>
+						{priceTitle}: <b>${device.price}</b>
 					</Card.Text>
 					<Button
 						onClick={() => { return quantity ? onRemoveClick(device.id) : onBuyClick(device); }}

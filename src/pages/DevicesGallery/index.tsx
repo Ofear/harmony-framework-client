@@ -55,6 +55,10 @@ class DeviceGallery extends React.Component<Props> {
 		return (
 			<Container>
 				<Row>
+					<h1>{translate('deviceGallery.pageTitle')}</h1>
+				</Row>
+				<br />
+				<Row>
 					<CardDeck>
 						{deviceList.map((device: Device) => (
 							<DeviceCard
