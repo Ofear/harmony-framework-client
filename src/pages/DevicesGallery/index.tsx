@@ -3,7 +3,7 @@ import { Dispatch } from 'redux';
 import { TranslateFunction } from 'react-localize-redux';
 import { baseConnect } from '@base/features/base-redux-react-connect';
 import {
-	Container, Row, CardDeck, Button
+	Container, Row, CardDeck, Button, Form
 } from 'react-bootstrap';
 import './style.scss';
 import { ApplicationState } from 'actions/redux';
@@ -25,7 +25,19 @@ interface Props {
 	history: any;
 }
 
-class DeviceGallery extends React.Component<Props> {
+interface State {
+	searchValue: string;
+}
+
+class DeviceGallery extends React.Component<Props, State> {
+	constructor(props: Props) {
+		super(props);
+
+		this.state = {
+			searchValue: ''
+		};
+	}
+
 	getQuantity(id: number | string): number {
 		const { cartItems } = this.props;
 
@@ -38,12 +50,15 @@ class DeviceGallery extends React.Component<Props> {
 		return 0;
 	}
 	componentDidMount() {
-		const { getDeviceList } = this.props;
+		const { getDeviceList, deviceList } = this.props;
 
-		getDeviceList();
+		if (!deviceList || !deviceList.length) {
+			getDeviceList();
+		}
 	}
 
 	render() {
+		const { searchValue } = this.state;
 		const {
 			deviceList, translate, addToCart, removeFromCart, cartItems, history, clearCart
 		} = this.props;
@@ -58,20 +73,36 @@ class DeviceGallery extends React.Component<Props> {
 					<h1>{translate('deviceGallery.pageTitle')}</h1>
 				</Row>
 				<br />
+				<Form>
+					<Form.Group>
+						<Form.Control
+							style={{ width: '30%' }}
+							type="text"
+							placeholder="search..."
+							onChange={(e) => this.setState({ searchValue: e.target.value.toLowerCase() })}
+						/>
+					</Form.Group>
+				</Form>
 				<Row>
 					<CardDeck>
-						{deviceList.map((device: Device) => (
-							<DeviceCard
-								key={device.id}
-								device={device}
-								buttonTitle={translate('deviceGallery.addToCartButton')}
-								removeButtonTitle={translate('deviceGallery.removeFromCartButton')}
-								priceTitle={translate('deviceGallery.priceTitle')}
-								onBuyClick={addToCart}
-								onRemoveClick={removeFromCart}
-								quantity={this.getQuantity(device.id)}
-							/>
-						))}
+						{deviceList.map((device: Device) => {
+							if (!searchValue || device.name.toLowerCase().includes(searchValue)) {
+								return (
+									<DeviceCard
+										key={device.id}
+										device={device}
+										buttonTitle={translate('deviceGallery.addToCartButton')}
+										removeButtonTitle={translate('deviceGallery.removeFromCartButton')}
+										priceTitle={translate('deviceGallery.priceTitle')}
+										onBuyClick={addToCart}
+										onRemoveClick={removeFromCart}
+										quantity={this.getQuantity(device.id)}
+									/>
+								);
+							}
+
+							return null;
+						})}
 					</CardDeck>
 				</Row>
 

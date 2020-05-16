@@ -20,7 +20,7 @@ const DeviceCard: React.FC<Props> = (props: Props) => {
 	} = props;
 
 	return (
-		<Col key={device.id} xs={6} md={4} className="device-card-col">
+		<Col key={device.id} xs={0} md={0} className="device-card-col">
 			<Card className="device-card">
 				<Card.Body>
 					<Card.Img variant="top" src={device.image} className="device-card-img" />

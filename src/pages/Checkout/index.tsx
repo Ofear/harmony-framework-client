@@ -4,6 +4,7 @@ import { baseConnect } from '@base/features/base-redux-react-connect';
 import { ApplicationState } from 'actions/redux';
 import { CartItem } from 'actions/redux/cart/interfaces';
 import { cartSelector } from 'actions/redux/cart';
+import { RoutesPath } from 'routes';
 import {
 	Container, Row, Media
 } from 'react-bootstrap';
@@ -11,11 +12,20 @@ import {
 interface Props {
 	cartItems: CartItem[];
 	translate: TranslateFunction;
+	history: any;
 }
 
 class Checkout extends React.Component<Props> {
 	getTotalPrice(cartItems: CartItem[]): number {
 		return cartItems.reduce((total, item): number => total + item.price, 0);
+	}
+
+	componentDidMount(): void {
+		const { cartItems, history } = this.props;
+
+		if (!cartItems || !cartItems.length) {
+			history.push(RoutesPath.ROOT);
+		}
 	}
 
 	render() {
