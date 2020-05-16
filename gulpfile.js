@@ -1,4 +1,3 @@
-
 const gulp = require('gulp');
 const template = require('gulp-template');
 const header = require('gulp-header');
@@ -68,9 +67,10 @@ gulp.task('createSaga', () => {
 
 	createTemplate(
 		'./generator/templates/client/saga-template',
-		`${process.env.INIT_CWD}/${sagaName}/${sagaName}.ts`,
+		`${process.env.INIT_CWD}/${sagaName}/index.ts`,
 		{
-			sagaName
+			sagaName,
+			sagaNameUppercase: capitalizeFirstLate(sagaName)
 		}
 	);
 

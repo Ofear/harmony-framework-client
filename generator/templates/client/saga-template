@@ -1,23 +1,25 @@
-import {all, call, fork, put, takeLatest} from 'redux-saga/effects';
+import {
+	all, call, fork, put, takeLatest
+} from 'redux-saga/effects';
 // import { AxiosResponse } from 'axios';
 // import api from 'requests';
-// import SomeActions, { SomeTypes } from 'actions/redux/example';
-// import { IExample } from 'actions/redux/example/interfaces';
+// import <%= sagaNameUppercase %>Actions, { <%= sagaNameUppercase %>Types } from 'actions/redux/<%= sagaName %>';
+// import {  } from 'actions/redux/<%= sagaName %>/interfaces';
 
 function* mySaga() {
-	// const response: AxiosResponse<IExample> = yield call(api.getDevices);
+	// const response: AxiosResponse<Example> = yield call(api.someApi);
 
-	// yield put(CatalogActions.setDeviceList(response.data));
+	// yield put(<%= sagaNameUppercase %>Actions.someAction(response.data));
 }
 
 function* watchMySaga() {
-    // yield takeLatest(SomeTypes.SOME_ACTION, mySaga);
+	// yield takeLatest(<%= sagaNameUppercase %>Types.MY_SAGA, mySaga);
 }
 
 function* <%= sagaName %>Saga() {
-    yield all([
-        fork(watchMySaga)
-    ]);
+	yield all([
+		fork(watchMySaga)
+	]);
 }
 
 // TODO: Add your new saga to index file
