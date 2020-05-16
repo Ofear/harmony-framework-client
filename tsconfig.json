@@ -27,7 +27,8 @@
   },
   "include": [
     "src/",
-    "index.d.ts"
+    "index.d.ts",
+    "test/"
   ],
-  "exclude": ["node_modules", "generator", "dist", "test"]
+  "exclude": ["node_modules", "generator", "dist"]
 }
