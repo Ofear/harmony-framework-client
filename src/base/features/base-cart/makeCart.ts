@@ -1,8 +1,9 @@
 import makeActionTypes from './makeActionTypes';
 import makeActions from './makeActions';
 import makeReducer from './makeReducer';
+import { Instance, Actions } from './interfaces';
 
-export const instances: Array<any> = [];
+export const instances: Array<Instance> = [];
 export const getInstances = () => instances;
 
 export const makeCart = (cartName: any) => {
@@ -10,7 +11,7 @@ export const makeCart = (cartName: any) => {
 
 	const instance = {
 		actionTypes: makeActionTypes(cartName),
-		actions: makeActions(cartName, actionTypes),
+		actions: makeActions(cartName, actionTypes) as Actions,
 		reducer: makeReducer(cartName, actionTypes),
 	};
 

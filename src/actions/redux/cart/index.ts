@@ -11,7 +11,10 @@ import {
 
 const { Creators } = createActions<TypesNames, ActionCreator>({
 	setCartId: ['cartId'],
-	addToCart: ['item']
+	addToCart: ['item'],
+	updateCart: ['item'],
+	removeFromCart: ['id'],
+	clearCart: null
 });
 
 export const CartTypes = TypesNames;

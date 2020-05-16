@@ -25,7 +25,7 @@ export const makeReducer = (cartName: any, actionTypes: any) => {
 								}
 								: item
 						))
-						: state.items.concat(actionItem),
+						: state.items.concat({ ...actionItem, quantity: 1 }),
 				};
 			case actionTypes.UPDATE:
 				return {

@@ -1,6 +1,7 @@
 {
   "deviceGallery": {
     "addToCartButton": "Add to Cart",
+    "removeFromCartButton": "Remove",
     "priceTitle": "Price"
   }
 }

@@ -1,6 +1,5 @@
 const checkId = (id: any) => {
 	if (!id) throw new Error('Must specify item id!');
-	if (typeof id !== 'string') throw new Error('Id must be a string');
 };
 
 const makeAction = (actionTypes: any, type: any) => {

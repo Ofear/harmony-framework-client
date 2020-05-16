@@ -1,6 +1,7 @@
 {
   "deviceGallery": {
     "addToCartButton": "Ajouter au Chariot",
+    "removeFromCartButton": "Retirer",
     "priceTitle": "Prix"
   }
 }

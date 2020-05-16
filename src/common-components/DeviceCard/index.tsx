@@ -6,14 +6,17 @@ import './style.scss';
 
 interface Props {
 	device: Device;
+	quantity: number;
 	buttonTitle: LocalizedElementMap | LocalizedElement;
+	removeButtonTitle: LocalizedElementMap | LocalizedElement;
 	priceTitle: LocalizedElementMap | LocalizedElement;
 	onBuyClick: (device: Device) => void;
+	onRemoveClick: (id: number | string) => void;
 }
 
 const DeviceCard: React.FC<Props> = (props: Props) => {
 	const {
-		device, buttonTitle, priceTitle, onBuyClick
+		device, buttonTitle, priceTitle, onBuyClick, quantity, removeButtonTitle, onRemoveClick
 	} = props;
 
 	return (
@@ -31,12 +34,10 @@ const DeviceCard: React.FC<Props> = (props: Props) => {
 						<b>{device.price}</b>
 					</Card.Text>
 					<Button
-						onClick={() => {
-							onBuyClick(device);
-						}}
-						variant="primary"
+						onClick={() => { return quantity ? onRemoveClick(device.id) : onBuyClick(device); }}
+						variant={quantity ? 'secondary' : 'primary'}
 					>
-						{buttonTitle}
+						{ quantity ? removeButtonTitle : buttonTitle }
 					</Button>
 				</Card.Body>
 			</Card>

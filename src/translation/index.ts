@@ -6,8 +6,8 @@ export const languageTypes: string[] | NamedLanguage[] = ['en', 'fr'];
 
 export const translations = {
 	deviceGallery: {
-		x: 'y',
 		addToCartButton: [en.deviceGallery.addToCartButton, fr.deviceGallery.addToCartButton],
+		removeFromCartButton: [en.deviceGallery.removeFromCartButton, fr.deviceGallery.removeFromCartButton],
 		priceTitle: [en.deviceGallery.priceTitle, fr.deviceGallery.priceTitle]
 	}
 };
