@@ -21,7 +21,7 @@ export interface SetDeviceListAction extends Action<TypesNames.SET_DEVICE_LIST> 
 export interface Device {
 	id: number;
 	name: string;
-	price: string;
+	price: number;
 	description: string;
 	image: string;
 	brand: string;

@@ -1,5 +1,6 @@
 {
   "deviceGallery": {
+    "pageTitle": "Device Gallery",
     "addToCartButton": "Add to Cart",
     "priceTitle": "Price"
   }
