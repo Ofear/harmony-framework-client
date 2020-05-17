@@ -44,7 +44,7 @@ class DeviceGallery extends React.Component<Props, State> {
 		const item = cartItems.find((cartItem) => cartItem.id === id);
 
 		if (item) {
-			return item.
+			return item.quantity as number;
 		}
 
 		return 0;
