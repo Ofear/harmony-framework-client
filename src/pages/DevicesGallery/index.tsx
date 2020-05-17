@@ -70,7 +70,7 @@ class DeviceGallery extends React.Component<Props, State> {
 		return (
 			<Container>
 				<Row>
-					<h1>{translate('deviceGallery.pageTitle')}</h1>
+					<h1 id="page-header">{translate('deviceGallery.pageTitle')}</h1>
 				</Row>
 				<br />
 				<Form>
@@ -78,6 +78,7 @@ class DeviceGallery extends React.Component<Props, State> {
 						<Form.Control
 							style={{ width: '30%' }}
 							type="text"
+							automation-id="filter-input"
 							placeholder="search..."
 							onChange={(e) => this.setState({ searchValue: e.target.value.toLowerCase() })}
 						/>

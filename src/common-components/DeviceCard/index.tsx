@@ -25,7 +25,7 @@ const DeviceCard: React.FC<Props> = (props: Props) => {
 				<Card.Body>
 					<Card.Img variant="top" src={device.image} className="device-card-img" />
 					<Card.Text />
-					<Card.Title>{device.name}</Card.Title>
+					<Card.Title automation-id="card-title">{device.name}</Card.Title>
 					<Card.Text>{device.description}</Card.Text>
 					<Card.Text />
 					<Card.Text>{priceTitle}: <b>${device.price}</b>
