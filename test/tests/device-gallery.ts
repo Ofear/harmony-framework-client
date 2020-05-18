@@ -1,7 +1,7 @@
 
 jest.setTimeout(10000);
 
-describe('Google', () => {
+describe('Device Gallery', () => {
 	beforeAll(async () => {
 		await page.goto('http://localhost:4000');
 	});
@@ -39,5 +39,10 @@ describe('Google', () => {
 	});
 	it('Should open cart', async () => {
 		await expect(page).toClick('a[automation-id="open-cart"]');
+	});
+	it('Should cart contain items', async () => {
+		await page.waitForSelector('ul');
+		const numberOfItems = await page.$$('ul > li[class="clearfix"]');
+		expect(numberOfItems.length).toBeGreaterThanOrEqual(1);
 	});
 });
