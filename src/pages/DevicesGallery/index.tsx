@@ -73,13 +73,12 @@ class DeviceGallery extends React.Component<Props, State> {
 					<h1 id="page-header">{translate('deviceGallery.pageTitle')}</h1>
 				</Row>
 				<br />
-				<Form>
+				<Form className="row">
 					<Form.Group>
 						<Form.Control
-							style={{ width: '30%' }}
 							type="text"
 							automation-id="filter-input"
-							placeholder="search..."
+							placeholder="Search"
 							onChange={(e) => this.setState({ searchValue: e.target.value.toLowerCase() })}
 						/>
 					</Form.Group>
@@ -107,7 +106,7 @@ class DeviceGallery extends React.Component<Props, State> {
 					</CardDeck>
 				</Row>
 
-				<Row className="footer-button-row">
+				<Row className="footer-button-row" style={{ display: 'none' }}>
 					<Button
 						className="footer-buttons"
 						variant="success"

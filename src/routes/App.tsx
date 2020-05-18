@@ -4,6 +4,7 @@ import { baseConnect } from '@base/features/base-redux-react-connect';
 import { Spinner } from 'react-redux-spinner'; // Can be Replace with your Custom Spinner
 import Localization from 'containers/Localization';
 import ErrorHandler from 'containers/ErrorHandler';
+import Header from 'containers/Header';
 
 interface Props {
 	children: any;
@@ -18,6 +19,7 @@ class App extends React.Component<Props> {
 				<ErrorHandler />
 				<Spinner config={{}} />
 				<Localization />
+				<Header />
 				{children}
 			</>
 		);
@@ -28,10 +30,10 @@ class App extends React.Component<Props> {
 
 		return (
 			<>
-				<h1>Hello Mobile</h1>
 				<ErrorHandler />
 				<Spinner config={{}} />
 				<Localization />
+				<Header />
 				{children}
 			</>
 		);
