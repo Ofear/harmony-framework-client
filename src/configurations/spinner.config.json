@@ -1,5 +1,5 @@
 {
   "ignoreList": [
-    "http://.*:5555/devices"
+    ".*/v1/devices"
   ]
 }
