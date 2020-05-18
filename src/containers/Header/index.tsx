@@ -47,7 +47,10 @@ class Header extends React.Component<Props, HeaderState> {
 		} = this.props;
 		const { cartToggle } = this.state;
 		const cartItemsLength = cartItems && cartItems.length ? cartItems.length : 0;
+
+		// eslint-disable-next-line no-console
 		console.log(cartItems);
+
 		return (
 			<>
 				<nav>
