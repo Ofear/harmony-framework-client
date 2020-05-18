@@ -1,16 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import * as React from 'react';
 import { Dispatch } from 'redux';
+import { Link } from 'react-router-dom';
 import { TranslateFunction } from 'react-localize-redux';
 import { baseConnect } from '@base/features/base-redux-react-connect';
 import { ApplicationState } from 'actions/redux';
-import { RoutesPath } from 'routes';
 import CartActions, { cartSelector } from 'actions/redux/cart';
 import {
 	Row, Button
 } from 'react-bootstrap';
 import './style.scss';
 import { CartItem } from 'actions/redux/cart/interfaces';
+import { RoutesPath } from 'routes';
 
 interface Props {
 	cartItems: CartItem[];
@@ -56,7 +57,9 @@ class Header extends React.Component<Props, HeaderState> {
 				<nav>
 					<div className="container">
 						<ul className="navbar-left">
-							<li><a href="/">Home</a></li>
+							<li>
+								<Link to={RoutesPath.ROOT}>Home</Link>
+							</li>
 						</ul>
 
 						<ul className="navbar-right">
