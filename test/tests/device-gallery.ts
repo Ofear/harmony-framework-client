@@ -32,6 +32,12 @@ describe('Google', () => {
 			return '';
 		});
 		await expect(textContent).toEqual('Samsung Galaxy A70s');
-		await new Promise((resolve) => setTimeout(resolve, 5000));
+	});
+
+	it('Should add to cart', async () => {
+		await expect(page).toClick('button[automation-id="add-to-cart"]');
+	});
+	it('Should open cart', async () => {
+		await expect(page).toClick('a[automation-id="open-cart"]');
 	});
 });

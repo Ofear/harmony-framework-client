@@ -31,6 +31,7 @@ const DeviceCard: React.FC<Props> = (props: Props) => {
 					<Card.Text>{priceTitle}: <b>${device.price}</b>
 					</Card.Text>
 					<Button
+						automation-id="add-to-cart"
 						onClick={() => { return quantity ? onRemoveClick(device.id) : onBuyClick(device); }}
 						variant={quantity ? 'secondary' : 'primary'}
 					>

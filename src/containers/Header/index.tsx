@@ -58,7 +58,12 @@ class Header extends React.Component<Props, HeaderState> {
 
 						<ul className="navbar-right">
 							<li>
-								<a href="#" onClick={() => { this.setCartToggle(); }} id="cart">
+								<a
+									href="#"
+									automation-id="open-cart"
+									onClick={() => { this.setCartToggle(); }}
+									id="cart"
+								>
 									<i className="fa fa-shopping-cart" />
 									Cart
 									<span className="badge">
@@ -83,7 +88,7 @@ class Header extends React.Component<Props, HeaderState> {
 							</div>
 						</div>
 
-						<ul className="shopping-cart-items">
+						<ul className="shopping-cart-items" automation-id="shopping-cart-items">
 							{
 								cartItems.map((item) => {
 									return (
