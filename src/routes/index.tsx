@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Switch } from 'react-router-dom';
 import Route from './PageContainer';
 
 /* -------------- Pages --------------- */
@@ -13,7 +14,9 @@ export enum RoutesPath {
 
 export default (
 	<App>
-		<Route exact path={RoutesPath.ROOT} component={DeviceGalleryPage} />
-		<Route exact path={RoutesPath.ERROR_PAGE} component={() => <div>error page</div>} />
+		<Switch>
+			<Route exact path={RoutesPath.ROOT} component={DeviceGalleryPage} />
+			<Route exact path={RoutesPath.ERROR_PAGE} component={() => <div>error page</div>} />
+		</Switch>
 	</App>
 );
