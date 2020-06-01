@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { LocalizeProvider } from 'react-localize-redux';
 
@@ -24,7 +24,7 @@ ReactDOM.render(
 		<PersistGate persistor={persistor}>
 			<LocalizeProvider store={Store}>
 				<BrowserRouter>
-					<Switch>{routes}</Switch>
+					{routes}
 				</BrowserRouter>
 			</LocalizeProvider>
 		</PersistGate>
